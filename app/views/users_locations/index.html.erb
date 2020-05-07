@@ -1,0 +1,4 @@
+<h1>List of favorite place</h1>
+<% @favorite.each do |place| %>
+<%= link_to Location.find(place.location_id).name,  users_location_lists_path(users_location_id: place.id) %>
+<% end %>

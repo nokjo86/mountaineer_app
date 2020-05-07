@@ -1,0 +1,21 @@
+<h1><%= @location.name %></h1>
+
+
+<%# Show button to create list only if user has already signed in and hasn't created a list %>
+<% if user_signed_in? %>
+  <%if current_user.users_locations.exists?(location_id: @location.id) == false %>
+    <%= button_to 'Create List', {controller: :users_locations, action: :create, location_id: @location.id, method: :post}%>
+  <% else %>
+<%# Otherwise just print the list of items %>
+    <% relationship = current_user.users_locations.find_by(location_id: @location.id) %>
+    <% lists = List.where(users_location_id: relationship.id) %>
+    <% lists.each do |list| %>
+      <%= Gear.find(list.gear_id).name%>
+      <%= list.quantity %>
+    <% end %>
+    <% p relationship.id%>
+    <%= link_to 'Edit lists', controller: :users_locations, action: :index, users_location_id: relationship.id %>
+  <% end %>
+<% end %>
+
+

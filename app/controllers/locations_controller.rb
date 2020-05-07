@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-before_action :authenticate_user!, only: [:create, :destroy]
+before_action :authenticate_user!, only: [:create, :edit, :new, :update, :destroy]
 before_action :set_location, only: [:show, :edit, :update, :destroy]
 
 
@@ -21,6 +21,7 @@ before_action :set_location, only: [:show, :edit, :update, :destroy]
       redirect_to @location
     else
       render :new
+    end
   end
 
   def edit

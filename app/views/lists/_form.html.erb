@@ -1,0 +1,10 @@
+<%= form_with(model: [@userslocation, list], local: true) do |form| %>
+<%= form.label :gear %>
+<%= form.collection_select(:gear_id, Gear.all, :id, :name) %>
+
+<%= form.label :quantity %>
+<%= form.number_field :quantity %>
+
+<%= form.submit "Submit"%>
+<% end %>
+
