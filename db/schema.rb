@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_07_103048) do
+ActiveRecord::Schema.define(version: 2020_05_07_103322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 2020_05_07_103048) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.bigint "users_location_id", null: false
+    t.bigint "gear_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gear_id"], name: "index_lists_on_gear_id"
+    t.index ["users_location_id"], name: "index_lists_on_users_location_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -41,4 +51,17 @@ ActiveRecord::Schema.define(version: 2020_05_07_103048) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "users_locations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "location_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["location_id"], name: "index_users_locations_on_location_id"
+    t.index ["user_id"], name: "index_users_locations_on_user_id"
+  end
+
+  add_foreign_key "lists", "gears"
+  add_foreign_key "lists", "users_locations"
+  add_foreign_key "users_locations", "locations"
+  add_foreign_key "users_locations", "users"
 end

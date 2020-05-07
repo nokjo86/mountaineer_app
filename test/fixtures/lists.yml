@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  users_location: one
+  gear: one
+  quantity: 1
+
+two:
+  users_location: two
+  gear: two
+  quantity: 1
