@@ -4,7 +4,7 @@ before_action :set_location, only: [:show, :edit, :update, :destroy]
 
 
   def index
-    @location = Location.all
+    @locations = Location.all
   end
 
   def show
