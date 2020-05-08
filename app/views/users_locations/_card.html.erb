@@ -6,4 +6,5 @@
   </div>
   <% relationship = current_user.users_locations.where(location_id: location.id) %>
   <%= link_to 'View List',  users_location_lists_path(users_location_id: relationship.first[:id]) %>
+  <%# <%= button_to 'Delete', {controller: :users_locations, action: :destroy, users_location_id: relationship.first[:id], method: :delete} %>
 </div>
