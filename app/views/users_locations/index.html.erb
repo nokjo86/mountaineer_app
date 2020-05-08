@@ -1,4 +1,6 @@
-<h1>List of favorite place</h1>
-<% @favorite.each do |place| %>
-<%= link_to Location.find(place.location_id).name,  users_location_lists_path(users_location_id: place.id) %>
-<% end %>
+<h1>List of favorite places</h1>
+<div class="row justify-content-around">
+  <% @favorite.each do |place| %>
+    <% location = Location.find(place.location_id) %>
+    <%= render 'card', location: location %>
+  <% end %>

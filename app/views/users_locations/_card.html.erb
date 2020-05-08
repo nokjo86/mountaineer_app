@@ -1,0 +1,9 @@
+<div class="card text-center my-3 col-md-4 col-xs-12" style="max-width:30%; min-width:18rem;">
+  <%= image_tag image_for(location) , alt: "#{location.name} image", class: 'card-img-top img_fluid' %>
+  <div class="card-body">
+    <h5 class="card-title"><%= location.name %></h5>
+    <p class="card-text"><%= location.description %></p>
+  </div>
+  <% relationship = current_user.users_locations.where(location_id: location.id) %>
+  <%= link_to 'View List',  users_location_lists_path(users_location_id: relationship.first[:id]) %>
+</div>

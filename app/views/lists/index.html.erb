@@ -1,10 +1,19 @@
-<h1>List of Item </h1>
+<h1>List of Items </h1>
+
+
 <% @list.each do |item| %>
 <%= Gear.find(item.gear_id).name %>
 <%= item.quantity %>
-<%= button_to 'Edit', edit_users_location_list_path(id: item.id, users_location_id: item.users_location_id), method: :get  %> 
-<%= button_to 'Delete Item', users_location_list_path(id: item.id, users_location_id: item.users_location_id), method: :delete %>
-<%= button_to 'Add Item', new_users_location_list_url, method: :get %> 
 
+
+
+<%= button_to 'Edit', edit_users_location_list_path(id: item.id, users_location_id: item.users_location_id), method: :get, class: 'btn btn-info'%> 
+<%= button_to 'Delete Item', users_location_list_path(id: item.id, users_location_id: item.users_location_id), method: :delete, class: 'btn btn-danger' %>
 
 <% end %>
+
+<div>
+<%= button_to 'Add Item', new_users_location_list_url, method: :get, class: "btn btn-success" %> 
+</div>
+
+
