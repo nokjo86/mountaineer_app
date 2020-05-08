@@ -65,13 +65,13 @@ locations.map! do |location|
     )
 end
 
-locations.each do |location|
-  location.image.attach(
-    io: File.open("app/assets/images/header-home.jpg"), 
-    filename: "header-home.jpg", 
-    content_type: "image/jpg"
-  )
-end 
+# locations.each do |location|
+#   location.image.attach(
+#     io: File.open("app/assets/images/header-home.jpg"), 
+#     filename: "header-home.jpg", 
+#     content_type: "image/jpg"
+#   )
+# end 
 
 puts "Locations successfully seeded"
 

@@ -47,7 +47,7 @@ load_and_authorize_resource
   end
 
   def location_params
-    params.require(:location).permit(:name, :description)
+    params.require(:location).permit(:name, :description, :image)
   end
 
 end
