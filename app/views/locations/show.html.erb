@@ -1,5 +1,28 @@
-<h1><%= @location.name %></h1>
+<h1></h1>
+<div class="row content mt-3">
+  <div class="col-md-4">
+    <%= image_tag image_for(@restaurant) , alt: "#{@restaurant.name(opens in new tab)} image", class: 'mt-2', style: 'width:100%;' %>
+  </div>
+  <div class="col-md-8">
+    <h1><%= @restaurant.name %></h1>
+    <div>
+      <strong>Cuisine:  </strong>
+      <span><%= @restaurant.cuisine %></span>
+    </div>
+    <div>
+      <strong>Location:  </strong>
+      <span><%= @restaurant.location %></span>
+    </div>
+    <p><%= @restaurant.description %></p>
+    <% if can? :edit, @restaurant %> <!-- what if current user is not defined in controller? -->
+    <%= link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn btn-info'%>
+    <%= link_to 'Delete', restaurant_path(@restaurant), method: :delete, class: 'btn btn-danger', data: { confirm: "Really delete #{@restaurant.name(opens in new tab)}?"} %>
+    <% end %>
+    <%= link_to 'Back', restaurants_path, class: 'btn btn-primary' %> 
+  </div>
+</div>
 
+<h1><%= @location.name %></h1>
 
 <%# Show button to create list only if user has already signed in and hasn't created a list %>
 <% if user_signed_in? %>
@@ -17,5 +40,3 @@
     <%= link_to 'Edit lists', controller: :users_locations, action: :index, users_location_id: relationship.id %>
   <% end %>
 <% end %>
-
-
