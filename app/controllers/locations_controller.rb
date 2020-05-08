@@ -1,6 +1,7 @@
 class LocationsController < ApplicationController
 before_action :authenticate_user!, only: [:create, :edit, :new, :update, :destroy]
 before_action :set_location, only: [:show, :edit, :update, :destroy]
+load_and_authorize_resource
 
 
   def index
@@ -15,8 +16,7 @@ before_action :set_location, only: [:show, :edit, :update, :destroy]
   end
 
   def create
-    @location = location.new(location_params)
-    @location.user = current_user
+    @location = Location.new(location_params)
     if @location.save
       redirect_to @location
     else

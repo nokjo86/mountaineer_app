@@ -5,9 +5,8 @@ def index
 end
 
 def create
-  p params
-  relationship = UsersLocation.create(user_id: params[:user_id], location_id: params[:location_id])
-  # p relationship
+  relationship = UsersLocation.create(user_id: current_user.id, location_id: params[:location_id])
+  redirect_to new_users_location_list_path(users_location_id: relationship.id)
 end
 
 end
